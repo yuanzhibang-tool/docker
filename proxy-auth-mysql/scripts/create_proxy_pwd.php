@@ -1,4 +1,4 @@
-<?php
+ <?php
 function create_proxy_pwd($password){
     $options = ['cost' => 12];
     $authPwd = password_hash($password, PASSWORD_BCRYPT, $options);
