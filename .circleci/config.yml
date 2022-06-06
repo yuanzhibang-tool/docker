@@ -1,0 +1,15 @@
+version: 2.1
+jobs: # a basic unit of work in a run
+  build-proxy: # your job name
+    machine:
+      image: ubuntu-2004:current
+    steps: # a series of commands to run
+      - checkout # pull down code from your version control system.
+      - run:
+          name: build proxy
+          command: cd proxy-auth-file && ./build.sh
+workflows:
+  version: 2
+  build-proxy:
+    jobs:
+      - build-proxy
