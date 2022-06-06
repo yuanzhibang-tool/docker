@@ -1,0 +1,31 @@
+version: '3'
+services:
+  auth_mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'p8WOmXgzZg'
+    volumes:
+      - ./data/auth-mysql:/var/lib/mysql
+      - ./etc/mysql:/docker-entrypoint-initdb.d
+  auth_phpmyadmin:
+    image: phpmyadmin:latest
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      PMA_ARBITRARY: '1'
+      PMA_HOST: auth_mysql
+      PMA_PORT: 3306
+      UPLOAD_LIMIT: 88888888
+    depends_on:
+      - auth_mysql
+  auth_proxy:
+    build: .
+    restart: always
+    ports:
+      - 7789:7789
+    volumes:
+      - ./etc/apache2/proxy.conf:/etc/apache2/ports.conf
+    depends_on:
+      - auth_mysql

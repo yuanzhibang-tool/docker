@@ -24,10 +24,10 @@ if(!file_exists($htpasswdPath)){
 $htpasswdFile = fopen("$htpasswdPath/.htpasswd", "w") or die("Unable to open file!");
 fwrite($htpasswdFile, $authString);
 fclose($htpasswdFile);
-if(!isset($argv[3])){
-    $port = 7789;
-}else{
-    $port = $argv[3];
-}
-replace_port('/etc/apache2/ports.conf', $port);
-replace_port('/etc/apache2/sites-available/config/proxy.conf', $port);
+// if(!isset($argv[3])){
+//     $port = 7789;
+// }else{
+//     $port = $argv[3];
+// }
+// replace_port('/etc/apache2/ports.conf', $port);
+// replace_port('/etc/apache2/sites-available/config/proxy.conf', $port);

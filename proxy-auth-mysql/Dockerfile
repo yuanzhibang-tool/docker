@@ -15,4 +15,11 @@ RUN echo 'deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe m
     > /etc/apt/sources.list
 
 RUN apt update
-RUN apt upgrade
+#! 更新
+RUN apt -y upgrade
+
+RUN apt install -y apache2 libaprutil1-dbd-mysql php7.4-cli
+
+RUN a2enmod ssl dbd authn_dbd rewrite lbmethod_byrequests deflate expires proxy proxy_balancer proxy_connect proxy_ftp proxy_http headers
+
+ENTRYPOINT apachectl -D FOREGROUND
