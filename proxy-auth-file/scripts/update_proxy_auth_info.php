@@ -5,16 +5,15 @@ function create_proxy_pwd($password){
     return $authPwd;
 }
 function replace_port($filePath,$port){
-    $fileContent = readfile($filePath);
+    $fileContent = file_get_contents($filePath);
     $fileContent = str_replace('$port$',$port,$fileContent);
     $file = fopen($filePath, "w") or die("Unable to open file!");
     fwrite($file, $fileContent);
     fclose($file);
 }
-$args = getopt('user:pwd:port');
-$user = $args['user'];
-$password = $args['pwd'];
-$port = $args['port'];
+$user = $argv[1];
+$password = $argv[2];
+
 $authPwd = create_proxy_pwd($password);
 $authString = "$user:$authPwd";
 
@@ -25,7 +24,7 @@ if(!file_exists($htpasswdPath)){
 $htpasswdFile = fopen("$htpasswdPath/.htpasswd", "w") or die("Unable to open file!");
 fwrite($htpasswdFile, $authString);
 fclose($htpasswdFile);
-if(!$port){
+if(!isset($argv[3])){
     $port = 7789;
 }
 // replace_port('/etc/apache2/ports.conf', $port);

@@ -1,1 +1,1 @@
-php update_proxy_auth_info.php -u $PROXY_USER -p $PROXY_PASSWORD
+php update_proxy_auth_info.php $PROXY_USER $PROXY_PASSWORD $PORT
