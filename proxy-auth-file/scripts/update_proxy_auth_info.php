@@ -27,8 +27,5 @@ fclose($htpasswdFile);
 if(!isset($argv[3])){
     $port = 7789;
 }
-// replace_port('/etc/apache2/ports.conf', $port);
-// replace_port('/etc/apache2/sites-available/config/proxy.conf', $port);
-
-replace_port('/root/github/docker/proxy-auth-file/config/sites-available/config/proxy.conf', $port);
-replace_port('/root/github/docker/proxy-auth-file/config/ports.conf', $port);
+replace_port('/etc/apache2/ports.conf', $port);
+replace_port('/etc/apache2/sites-available/config/proxy.conf', $port);
