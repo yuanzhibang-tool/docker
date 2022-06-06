@@ -22,4 +22,8 @@ RUN apt install -y apache2 libaprutil1-dbd-mysql php7.4-cli
 
 RUN a2enmod ssl dbd authn_dbd rewrite lbmethod_byrequests deflate expires proxy proxy_balancer proxy_connect proxy_ftp proxy_http headers
 
-ENTRYPOINT /scripts/init.sh && apachectl -D FOREGROUND
+ADD scripts /scripts
+ADD config /etc/apache2/
+
+
+ENTRYPOINT /scripts/run.sh && apachectl -D FOREGROUND
