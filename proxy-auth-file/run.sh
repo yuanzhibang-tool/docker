@@ -1,4 +1,5 @@
 #! /bin/bash
+# 请cd到本文件所在目录执行
 # 先构建image
 docker build -t proxy-auth-file:latest .
 # 执行并配置参数
