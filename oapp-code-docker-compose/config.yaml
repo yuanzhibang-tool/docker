@@ -1,0 +1,16 @@
+proxies: #代理配置,进行OAuth2接口操作使用该接口,可以使用docker快速部署代理:https://hub.docker.com/r/yuanzhibang/proxy
+  http: 'http://1234:123456@app-proxy:7789' # 必须携带http开头,否则会报错
+  https: 'http://1234:123456@app-proxy:7789' # 必须携带http开头,否则会报错
+storage_redis: #缓存token信息的redis服务器可以使用docker快速部署:https://hub.docker.com/_/redis
+  host: app-redis
+  port: 6379
+  auth: aOmXp8WgzZg
+oauth_api: #无需更改该内容
+  get_server_access_token_url: 'https://oauth.yuanzhibang.com/OAuth2/token'
+  get_user_access_token_url: 'https://oauth.yuanzhibang.com/OAuth2/token'
+  get_js_ticket_url: 'https://oauth.yuanzhibang.com/OAuth2/ticket'
+  refresh_user_token_url: 'https://oauth.yuanzhibang.com/OAuth2/refreshtoken'
+app_info: #开放平台应用信息,支持多个开放平台应用
+  - app_id: 'YOUR APP ID'
+    app_secret: 'YOOUR APP SECRET'
+    app_name: 'YOUR APP NAME'

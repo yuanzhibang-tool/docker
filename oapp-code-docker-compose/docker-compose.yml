@@ -1,0 +1,25 @@
+version: '3.2'
+services:
+  app-oapp-token-cron:
+    image: yuanzhibang/oapp-token-cron-task:default
+    volumes:
+      - ./config.yaml:/scripts/config.yaml
+      - ./logs:/root/.pm2/logs
+    depends_on:
+      - app-proxy
+      - app-redis
+  app-proxy:
+    image: yuanzhibang/proxy:default
+    ports:
+      - 7789:7789
+    environment:
+      PROXY_USER: '1234'
+      PROXY_PASSWORD: '123456'
+  app-redis:
+    restart: always
+    image: redis:5-alpine
+    command: redis-server --port 6379 --requirepass aOmXp8WgzZg  --appendonly yes
+    ports:
+      - 6379:6379
+    volumes:
+      - ./data/app-redis/:/data
