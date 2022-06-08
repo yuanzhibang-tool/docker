@@ -11,6 +11,6 @@ oauth_api: #无需更改该内容
   get_js_ticket_url: 'https://oauth.yuanzhibang.com/OAuth2/ticket'
   refresh_user_token_url: 'https://oauth.yuanzhibang.com/OAuth2/refreshtoken'
 app_info: #开放平台应用信息,支持多个开放平台应用
-  - app_id: '101190'
-    app_secret: 'cd7845e688cb052c823dcf64b9143a6a8241609e'
-    app_name: '扁平色彩'
+  - app_id: 'YOUR APP ID'
+    app_secret: 'YOOUR APP SECRET'
+    app_name: 'YOUR APP NAME'
